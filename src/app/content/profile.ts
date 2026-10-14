@@ -19,7 +19,7 @@ export const profile = {
 };
 
 export const site = {
-  url: 'https://your-domain.com', // TODO
+  url: 'https://rashika-varshney.netlify.app',
   title: `${profile.name} | Freelance Angular & Frontend Developer`,
   description:
     'Freelance Angular developer with 4 years of experience building websites, dashboards and web app features for startups, small businesses and agencies.',
