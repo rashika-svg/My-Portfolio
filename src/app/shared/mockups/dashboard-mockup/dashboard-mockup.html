@@ -1,0 +1,103 @@
+<div class="glow"></div>
+
+<div class="window">
+  <div class="titlebar"><i></i><i></i><i></i><span class="url"></span></div>
+
+  <div class="body">
+    <div class="side">
+      <span class="logo"></span>
+      <span class="nav on"></span>
+      <span class="nav"></span>
+      <span class="nav"></span>
+      <span class="nav"></span>
+      <span class="nav"></span>
+    </div>
+
+    <div class="main">
+      <div class="top">
+        <span class="heading"></span>
+        <span class="search"></span>
+        <span class="avatar"></span>
+      </div>
+
+      <div class="kpis">
+        @for (path of kpis; track $index) {
+          <div class="kpi" [style.--i]="$index">
+            <span class="label"></span>
+            <span class="value"></span>
+            <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+              <path [attr.d]="path" vector-effect="non-scaling-stroke" />
+            </svg>
+          </div>
+        }
+      </div>
+
+      <div class="row">
+        <div class="chart">
+          <div class="chart-head">
+            <span class="title"></span>
+            <span class="seg"><b></b><b class="on"></b><b></b></span>
+          </div>
+          <svg viewBox="0 0 320 140" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="dm-area" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#0f6b5c" stop-opacity="0.2" />
+                <stop offset="1" stop-color="#0f6b5c" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              class="grid"
+              d="M0 35 H320 M0 70 H320 M0 105 H320"
+              vector-effect="non-scaling-stroke"
+            />
+            <path
+              class="area"
+              d="M0 112 C30 106 50 90 80 94 S130 72 160 76 S210 42 240 50 S290 24 320 28 V140 H0 Z"
+              fill="url(#dm-area)"
+            />
+            <path
+              class="line"
+              d="M0 112 C30 106 50 90 80 94 S130 72 160 76 S210 42 240 50 S290 24 320 28"
+              pathLength="1"
+              vector-effect="non-scaling-stroke"
+            />
+          </svg>
+
+          <span class="selection"></span>
+          <span class="handle tl"></span>
+          <span class="handle tr"></span>
+          <span class="handle bl"></span>
+          <span class="handle br"></span>
+          <span class="tag">Chart widget</span>
+        </div>
+
+        <div class="list">
+          <span class="title"></span>
+          @for (status of listItems; track $index) {
+            <div class="item">
+              <span class="avatar-dot"></span>
+              <span class="lines"><span></span><span></span></span>
+              <span class="pill" [class.draft]="status === 'draft'"></span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="inspector">
+  <p class="inspector-title">Chart widget</p>
+  <div class="inspector-row">
+    <span>Range</span>
+    <span class="segmented"><b>7d</b><b class="on">30d</b><b>90d</b></span>
+  </div>
+  <div class="inspector-row">
+    <span>Legend</span>
+    <span class="toggle on"></span>
+  </div>
+  <div class="inspector-row">
+    <span>Auto-refresh</span>
+    <span class="toggle"></span>
+  </div>
+</div>

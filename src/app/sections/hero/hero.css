@@ -1,0 +1,43 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faint dot grid, like a design canvas, fading out from behind the illustration. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgb(23 36 48 / 0.13) 1px, transparent 0);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 65% 60% at 78% 62%, #000 15%, transparent 70%);
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem 0.375rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.75);
+  color: var(--color-slate);
+  font-size: 0.8125rem;
+  font-weight: 520;
+}
+
+.availability-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #2b9a7a;
+  box-shadow: 0 0 0 3px rgb(43 154 122 / 0.18);
+}
+
+.skill {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  font-size: 0.8125rem;
+  font-weight: 520;
+}

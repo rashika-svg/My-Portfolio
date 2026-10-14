@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Source for public/og-image.png. Open at 1200×630, take a screenshot and save it over the PNG. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    @font-face {
+      font-family: 'Archivo';
+      font-weight: 100 900;
+      font-stretch: 62% 125%;
+      src: url('../node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2') format('woff2');
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      padding: 72px 80px;
+      background: #f6f7f4;
+      color: #172430;
+      font-family: 'Archivo', sans-serif;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgb(23 36 48 / 0.14) 1px, transparent 0);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(ellipse 55% 75% at 92% 60%, #000 10%, transparent 70%);
+    }
+    .brand { display: flex; align-items: center; gap: 18px; font-size: 26px; font-weight: 620; font-stretch: 108%; }
+    .mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #0f6b5c;
+      color: #0f6b5c;
+      font-size: 16px;
+      font-weight: 720;
+      font-stretch: 125%;
+    }
+    .mark::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      background:
+        linear-gradient(#0f6b5c 0 0) 0 0 / 9px 9px no-repeat,
+        linear-gradient(#0f6b5c 0 0) 100% 0 / 9px 9px no-repeat,
+        linear-gradient(#0f6b5c 0 0) 0 100% / 9px 9px no-repeat,
+        linear-gradient(#0f6b5c 0 0) 100% 100% / 9px 9px no-repeat;
+    }
+    h1 {
+      position: relative;
+      max-width: 15em;
+      margin-top: 64px;
+      font-size: 68px;
+      font-weight: 640;
+      font-stretch: 118%;
+      letter-spacing: -0.032em;
+      line-height: 1.03;
+    }
+    p { position: relative; margin-top: 36px; color: #56636e; font-size: 26px; }
+    .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: #0f6b5c; }
+  </style>
+</head>
+<body>
+  <div class="brand"><span class="mark">RV</span>Rashika Varshney</div>
+  <h1>I turn your requirements into polished, working web interfaces.</h1>
+  <p>Freelance Angular developer for startups, small businesses and agencies</p>
+  <div class="bar"></div>
+</body>
+</html>

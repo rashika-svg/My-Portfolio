@@ -1,0 +1,98 @@
+.portrait,
+.monogram {
+  width: 100%;
+  max-width: 20rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius-card);
+}
+
+.portrait {
+  height: auto;
+  object-fit: cover;
+}
+
+/* Placeholder until a portrait is added in profile.ts. */
+.monogram {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 1px 1px, rgb(15 107 92 / 0.16) 1px, transparent 0) 0 0 / 20px 20px,
+    linear-gradient(150deg, var(--color-pine-wash), #f2f6f2);
+  border: 1px solid var(--color-line);
+}
+
+.monogram span {
+  position: relative;
+  padding: 0.5rem 1.25rem;
+  outline: 1.5px solid var(--color-pine);
+  outline-offset: 0.75rem;
+  color: var(--color-pine);
+  font-size: 4.5rem;
+  font-weight: 700;
+  font-stretch: 125%;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.monogram span::before {
+  content: '';
+  position: absolute;
+  inset: calc(-0.75rem - 5px);
+  background:
+    linear-gradient(var(--color-pine) 0 0) 0 0 / 9px 9px no-repeat,
+    linear-gradient(var(--color-pine) 0 0) 100% 0 / 9px 9px no-repeat,
+    linear-gradient(var(--color-pine) 0 0) 0 100% / 9px 9px no-repeat,
+    linear-gradient(var(--color-pine) 0 0) 100% 100% / 9px 9px no-repeat;
+}
+
+.facts {
+  display: grid;
+  max-width: 20rem;
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+}
+
+.facts div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.facts dt {
+  color: var(--color-slate);
+}
+
+.toolkit {
+  display: grid;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.toolkit > div {
+  display: grid;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.toolkit dt {
+  color: var(--color-slate);
+  font-size: 0.9375rem;
+}
+
+.toolkit li {
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  background: var(--color-paper);
+  font-size: 0.875rem;
+}
+
+@media (width >= 40rem) {
+  .toolkit > div {
+    grid-template-columns: 10rem 1fr;
+    align-items: baseline;
+  }
+}

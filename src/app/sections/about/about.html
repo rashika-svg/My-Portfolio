@@ -1,0 +1,76 @@
+<section
+  id="about"
+  class="section-space border-t border-line bg-surface"
+  aria-labelledby="about-title"
+>
+  <div class="page-container grid gap-12 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-20">
+    <div class="self-start lg:sticky lg:top-28">
+      @if (profile.photo) {
+        <img
+          class="portrait"
+          [ngSrc]="profile.photo"
+          width="480"
+          height="480"
+          [alt]="'Portrait of ' + profile.name"
+        />
+      } @else {
+        <div class="monogram" aria-hidden="true">
+          <span>{{ profile.initials }}</span>
+        </div>
+      }
+
+      <dl class="facts">
+        @for (fact of facts; track fact.label) {
+          <div>
+            <dt>{{ fact.label }}</dt>
+            <dd>{{ fact.value }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <div>
+      <h2 id="about-title" class="type-h2">About me</h2>
+
+      <div class="mt-7 max-w-[38rem] space-y-5">
+        <p class="type-lede">
+          I'm {{ profile.name }}, a frontend developer with {{ profile.experience }} of professional
+          experience building interfaces that people use every day.
+        </p>
+        <p>
+          In my full-time role I've worked on an enterprise digital-signage platform: interactive
+          dashboards, drag-and-drop layout tools, media cropping and video playback, and rich-text
+          and code editors. I've also built admin dashboard modules and blog management features,
+          and integrated them with .NET Core REST APIs.
+        </p>
+        <p>
+          That work shaped how I build. I create reusable components instead of one-off screens, use
+          RxJS to keep data flow predictable, and check the details, like spacing, loading states
+          and edge cases, before I call something done. The result is an interface that is pleasant
+          to use today and easy to change later.
+        </p>
+        <p>
+          Now I take on freelance work for startups, small businesses and agencies. I keep
+          communication clear and estimates realistic, and I'm as comfortable inside an existing
+          codebase as I am starting from scratch.
+        </p>
+      </div>
+
+      <h3 class="mt-12 text-sm font-semibold">Toolkit</h3>
+      <dl class="toolkit">
+        @for (group of skillGroups; track group.label) {
+          <div>
+            <dt>{{ group.label }}</dt>
+            <dd>
+              <ul class="flex flex-wrap gap-1.5">
+                @for (item of group.items; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </dd>
+          </div>
+        }
+      </dl>
+    </div>
+  </div>
+</section>

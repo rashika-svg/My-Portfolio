@@ -1,0 +1,33 @@
+<section
+  id="services"
+  class="section-space border-y border-line bg-surface"
+  aria-labelledby="services-title"
+>
+  <div class="page-container">
+    <app-section-heading
+      headingId="services-title"
+      heading="How I can help"
+      lede="New builds, new features, or fixes to what you already have. Here is the frontend work I take on."
+    />
+
+    <ul class="mt-12 border-t border-line md:mt-16">
+      @for (service of services; track service.title) {
+        <li
+          class="grid gap-x-10 gap-y-3 border-b border-line py-7 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:py-9 lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)_minmax(0,3fr)]"
+        >
+          <h3 class="type-h3">{{ service.title }}</h3>
+          <p class="max-w-[36rem] text-slate">{{ service.benefit }}</p>
+          <p class="text-sm text-slate md:col-start-2 lg:col-start-auto lg:pt-1">
+            Good for <span class="font-medium text-ink">{{ service.goodFor }}</span>
+          </p>
+        </li>
+      }
+    </ul>
+
+    <p class="mt-10 text-slate">
+      Not sure which of these fits?
+      <a href="#contact" class="text-link">Describe the problem</a>
+      and I'll suggest an approach.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+<app-mockup-frame>
+  <div class="editor">
+    <div class="layers">
+      <span class="panel-title"></span>
+      @for (color of layers; track $index; let i = $index) {
+        @if (i === 1) {
+          <div class="layer slot"></div>
+        } @else {
+          <div class="layer">
+            <span class="grip"></span>
+            <span class="swatch" [style.background]="color"></span>
+            <span class="bar"></span>
+          </div>
+        }
+      }
+      <div class="layer dragging">
+        <span class="grip"></span>
+        <span class="swatch" [style.background]="layers[1]"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="screen">
+        <div class="media">
+          <div class="photo"></div>
+          <div class="crop">
+            <i class="third v1"></i>
+            <i class="third v2"></i>
+            <i class="third h1"></i>
+            <i class="third h2"></i>
+            <b class="corner c1"></b>
+            <b class="corner c2"></b>
+            <b class="corner c3"></b>
+            <b class="corner c4"></b>
+          </div>
+        </div>
+        <div class="text-zone">
+          <span class="toolbar"><i></i><i></i><i></i><i></i></span>
+          <span class="headline"></span>
+          <span class="copy"></span>
+          <span class="copy short"></span>
+          <span class="copy"></span>
+        </div>
+        <div class="ticker"><span></span><span></span><span></span></div>
+      </div>
+
+      <div class="timeline">
+        <span class="play"></span>
+        <div class="track">
+          @for (clip of clips; track $index) {
+            <span
+              class="clip"
+              [class]="clip.tone"
+              [class.active]="clip.active"
+              [style.flex-grow]="clip.width"
+            ></span>
+          }
+          <span class="playhead"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-mockup-frame>

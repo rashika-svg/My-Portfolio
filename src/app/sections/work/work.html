@@ -1,0 +1,16 @@
+<section id="work" class="section-space" aria-labelledby="work-title">
+  <div class="page-container">
+    <app-section-heading
+      headingId="work-title"
+      heading="Selected work"
+      lede="Professional work from my full-time role, plus personal projects I built to sharpen specific skills."
+    />
+
+    <div class="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2 lg:gap-8">
+      <app-project-card class="lg:col-span-2" [project]="featured" [featured]="true" />
+      @for (project of others; track project.id) {
+        <app-project-card [project]="project" />
+      }
+    </div>
+  </div>
+</section>

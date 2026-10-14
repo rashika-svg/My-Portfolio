@@ -1,0 +1,29 @@
+<app-mockup-frame>
+  <div class="app">
+    <div class="toolbar">
+      <span class="heading"></span>
+      <span class="search"></span>
+      <span class="add">+ Add contact</span>
+    </div>
+
+    <div class="tabs">
+      <span class="tab on">Contacts</span>
+      <span class="tab">Deleted <b>2</b></span>
+    </div>
+
+    <div class="list">
+      @for (contact of contacts; track contact.initial) {
+        <div class="item" [class.removing]="contact.removing">
+          <span class="avatar" [style.background]="contact.tone">{{ contact.initial }}</span>
+          <span class="lines"><span></span><span></span></span>
+          <span class="actions"><i></i><i class="bin"></i></span>
+        </div>
+      }
+    </div>
+
+    <div class="toast">
+      <span>Moved to deleted items</span>
+      <b>Restore</b>
+    </div>
+  </div>
+</app-mockup-frame>

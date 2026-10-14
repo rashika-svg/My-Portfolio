@@ -1,0 +1,25 @@
+<section id="process" class="section-space" aria-labelledby="process-title">
+  <div class="page-container">
+    <app-section-heading
+      headingId="process-title"
+      heading="How I work"
+      lede="A simple, predictable process, so you always know what is happening and what comes next."
+    />
+
+    <ol class="steps mt-12 md:mt-16">
+      @for (step of steps; track step.title; let i = $index) {
+        <li class="step">
+          <span class="marker" aria-hidden="true">{{ i + 1 }}</span>
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="mt-2 text-[0.9375rem] text-slate">{{ step.detail }}</p>
+        </li>
+      }
+    </ol>
+
+    <p class="pricing">
+      <strong class="font-semibold text-ink">About pricing.</strong>
+      Every project is quoted individually, based on its scope. You get a written estimate and
+      timeline before any work begins.
+    </p>
+  </div>
+</section>
