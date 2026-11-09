@@ -8,13 +8,20 @@ export const coreSkills = ['Angular', 'TypeScript', 'RxJS', 'Tailwind CSS', 'RES
 export const skillGroups: SkillGroup[] = [
   {
     label: 'Frontend',
-    items: ['Angular 16, 18 and 19', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
+    items: ['Angular 16 to 22', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
   },
   { label: 'UI and styling', items: ['Tailwind CSS', 'Bootstrap', 'Angular Material'] },
-  { label: 'Data and state', items: ['RxJS', 'Reactive state management', 'REST API integration'] },
+  { label: 'Data and state', items: ['RxJS', 'Reactive state management', 'REST APIs'] },
   {
     label: 'Interface work',
-    items: ['Dashboards', 'Drag and drop', 'Media cropping', 'Rich-text editors', 'Video players'],
+    items: [
+      'Dashboards',
+      'Data tables',
+      'Drag and drop',
+      'Media cropping',
+      'Rich-text editors',
+      'Video players',
+    ],
   },
-  { label: 'Backend exposure', items: ['ASP.NET Core', 'SQL Server', 'Redis'] },
+  { label: 'Backend exposure', items: ['ASP.NET Core', 'SQL Server', 'PostgreSQL', 'Redis'] },
 ];

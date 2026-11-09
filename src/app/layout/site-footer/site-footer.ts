@@ -1,28 +1,27 @@
 import { Component } from '@angular/core';
-import { profile } from '../../content/profile';
-import { Icon } from '../../shared/icon/icon';
+import { profile, site } from '../../content/profile';
 
 @Component({
   selector: 'app-site-footer',
-  imports: [Icon],
-  host: { class: 'block on-dark bg-[#0a302a] text-white/60' },
+  host: { class: 'block tone-dark' },
   template: `
-    <footer
-      class="page-container flex flex-col gap-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between"
-    >
-      <p>&copy; {{ year }} {{ profile.name }}</p>
-      <p>Built with Angular and Tailwind CSS</p>
-      <a
-        href="#top"
-        class="inline-flex items-center gap-1.5 font-medium text-white/85 hover:text-white"
+    <footer class="page-container">
+      <div
+        class="flex flex-col gap-3 border-t border-rule py-8 text-sm text-muted sm:flex-row sm:justify-between sm:gap-8"
       >
-        Back to top
-        <app-icon name="arrow-up" class="size-4" />
-      </a>
+        <p>&copy; {{ year }} {{ name }}</p>
+        <p>
+          Built with Angular and Tailwind CSS, set in Bricolage Grotesque, Geist and Geist Mono.
+          <a class="link" [href]="repo" target="_blank" rel="noopener noreferrer"
+            >Source on GitHub<span class="sr-only"> (opens in a new tab)</span></a
+          >
+        </p>
+      </div>
     </footer>
   `,
 })
 export class SiteFooter {
-  protected readonly profile = profile;
+  protected readonly name = profile.name;
+  protected readonly repo = site.repo;
   protected readonly year = new Date().getFullYear();
 }

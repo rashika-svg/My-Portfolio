@@ -1,0 +1,118 @@
+@let p = project();
+@let shots = images();
+
+<ng-template #links>
+  @if (p.links.length) {
+    <p class="flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
+      @for (link of p.links; track link.url) {
+        <a class="link" [href]="link.url" target="_blank" rel="noopener noreferrer">
+          {{ link.label }}<span class="sr-only"> for {{ p.title }} (opens in a new tab)</span>
+        </a>
+      }
+    </p>
+  }
+</ng-template>
+
+<ng-template #figure let-image>
+  <figure>
+    <a class="shot" [href]="image.src" target="_blank" rel="noopener">
+      <app-browser-frame [url]="image.address">
+        <img
+          class="block h-auto w-full"
+          [ngSrc]="image.src"
+          [alt]="image.alt"
+          [width]="image.width"
+          [height]="image.height"
+        />
+      </app-browser-frame>
+      <span class="sr-only">(opens the full-size image in a new tab)</span>
+    </a>
+    <figcaption class="type-meta mt-3">{{ image.caption }}</figcaption>
+  </figure>
+</ng-template>
+
+@if (variant() === 'compact') {
+  <article [attr.aria-labelledby]="p.id + '-title'">
+    <h4 [id]="p.id + '-title'" class="type-subtitle">{{ p.title }}</h4>
+    <p class="type-meta mt-1">{{ p.context }}</p>
+    <p class="mt-4 max-w-152 text-[0.9375rem] text-muted">{{ p.summary }}</p>
+    <p class="type-meta mt-4">Built with {{ stackText() }}</p>
+    <div class="mt-4"><ng-container [ngTemplateOutlet]="links" /></div>
+  </article>
+} @else {
+  <article [attr.aria-labelledby]="p.id + '-title'">
+    @if (shots.length && layout() === 'lead') {
+      <ng-container
+        [ngTemplateOutlet]="figure"
+        [ngTemplateOutletContext]="{ $implicit: shots[0] }"
+      />
+    }
+    @if (shots.length > 1 && layout() === 'pair') {
+      <div class="grid items-start gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <ng-container
+            [ngTemplateOutlet]="figure"
+            [ngTemplateOutletContext]="{ $implicit: shots[0] }"
+          />
+        </div>
+        <div class="lg:col-span-5">
+          <ng-container
+            [ngTemplateOutlet]="figure"
+            [ngTemplateOutletContext]="{ $implicit: shots[1] }"
+          />
+        </div>
+      </div>
+    }
+
+    <div class="grid gap-10 lg:grid-cols-12" [class.mt-14]="shots.length">
+      <header class="lg:col-span-4">
+        <h3 [id]="p.id + '-title'" class="type-case">{{ p.title }}</h3>
+        <p class="type-meta mt-3">{{ p.context }}</p>
+        <div class="mt-5"><ng-container [ngTemplateOutlet]="links" /></div>
+        <p class="type-meta mt-6 max-w-72">Built with {{ stackText() }}</p>
+      </header>
+
+      <div class="lg:col-span-8">
+        <p class="type-standfirst max-w-176">{{ p.summary }}</p>
+
+        @if (p.sections) {
+          <div class="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-2">
+            @for (section of p.sections; track section.heading) {
+              <div>
+                <h4 class="type-label">{{ section.heading }}</h4>
+                @if (section.style === 'index') {
+                  <ul class="index mt-4">
+                    @for (point of section.points; track point) {
+                      <li>{{ point }}</li>
+                    }
+                  </ul>
+                } @else {
+                  <ul class="bullets mt-4 space-y-3 text-[0.9375rem] text-muted">
+                    @for (point of section.points; track point) {
+                      <li>{{ point }}</li>
+                    }
+                  </ul>
+                }
+              </div>
+            }
+          </div>
+        }
+
+        @if (p.note) {
+          <p class="note mt-12">{{ p.note }}</p>
+        }
+      </div>
+    </div>
+
+    @if (shots.length > 1 && layout() === 'lead') {
+      <div class="mt-16 grid items-start gap-8 md:grid-cols-2">
+        @for (image of shots.slice(1); track image.src) {
+          <ng-container
+            [ngTemplateOutlet]="figure"
+            [ngTemplateOutletContext]="{ $implicit: image }"
+          />
+        }
+      </div>
+    }
+  </article>
+}

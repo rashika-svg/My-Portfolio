@@ -11,13 +11,15 @@ describe('App', () => {
     page = fixture.nativeElement as HTMLElement;
   });
 
-  it('renders the value-focused headline', () => {
-    expect(page.querySelector('h1')?.textContent).toContain('polished, working web interfaces');
+  it('introduces the developer by name and role', () => {
+    const heading = page.querySelector('h1')?.textContent ?? '';
+    expect(heading).toContain('Rashika Varshney');
+    expect(heading).toContain('Angular');
   });
 
   it('renders every section in order', () => {
     const ids = [...page.querySelectorAll('section[id]')].map((section) => section.id);
-    expect(ids).toEqual(['top', 'work', 'services', 'process', 'about', 'contact']);
+    expect(ids).toEqual(['top', 'work', 'services', 'working-together', 'about', 'contact']);
   });
 
   it('has no in-page links pointing at missing sections', () => {
@@ -41,7 +43,7 @@ describe('App', () => {
 
   it('points the primary calls to action at the right sections', () => {
     const hero = page.querySelector('#top')!;
-    expect(hero.querySelector('a.btn-primary')?.getAttribute('href')).toBe('#contact');
-    expect(hero.querySelector('a.btn-secondary')?.getAttribute('href')).toBe('#work');
+    expect(hero.querySelector('a.button')?.getAttribute('href')).toBe('#contact');
+    expect(hero.querySelector('a.link')?.getAttribute('href')).toBe('#work');
   });
 });

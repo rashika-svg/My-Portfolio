@@ -1,44 +1,37 @@
 export interface Service {
   title: string;
-  benefit: string;
-  goodFor: string;
+  description: string;
 }
 
 export const services: Service[] = [
   {
-    title: 'Websites and responsive builds',
-    benefit:
-      'A fast, responsive website or landing page built from your design or brief, and checked on phones, tablets and desktops so it looks right wherever your customers are.',
-    goodFor: 'small businesses and startups',
+    title: 'Websites',
+    description:
+      'Responsive websites and landing pages, built from your design or brief and checked on real phone, tablet and desktop sizes.',
   },
   {
-    title: 'Angular dashboards',
-    benefit:
-      'Admin panels and dashboards with tables, filters, charts and forms that make your data and day-to-day operations easier to manage.',
-    goodFor: 'founders and startups',
+    title: 'Dashboards and admin panels',
+    description:
+      'Tables, filters, forms and charts in Angular, for teams that need to see and manage their data in one place.',
   },
   {
-    title: 'Frontend feature development',
-    benefit:
-      'New features added to your existing Angular app, built to fit your codebase and conventions, so your team can keep working with them.',
-    goodFor: 'startups and product teams',
+    title: 'Features for Angular apps',
+    description:
+      "New screens and features that follow your codebase's structure and conventions, so your team can keep maintaining them.",
   },
   {
-    title: 'REST API integration',
-    benefit:
-      'Your interface connected to your backend or third-party APIs, with clear loading, error and empty states so users always know what is happening.',
-    goodFor: 'startups and founders',
+    title: 'API integration',
+    description:
+      'Connecting the interface to REST APIs, including the loading, error and empty states that are easy to skip.',
   },
   {
-    title: 'UI improvements and bug fixes',
-    benefit:
-      'Layout bugs, broken flows and inconsistent styling fixed, so your existing site or app feels finished and trustworthy again.',
-    goodFor: 'existing websites and apps',
+    title: 'Fixes and improvements',
+    description:
+      'Layout bugs, broken flows, inconsistent styling and slow pages in a site or app you already have.',
   },
   {
-    title: 'Ongoing frontend support',
-    benefit:
-      'Dependable frontend capacity when you need it. I pick up tickets, follow your process and hand back clean, reviewable code.',
-    goodFor: 'agencies',
+    title: 'Support for agencies',
+    description:
+      'Extra Angular capacity when you need it. I pick up tickets, follow your process and hand back code that is ready for review.',
   },
 ];
