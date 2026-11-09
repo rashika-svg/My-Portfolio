@@ -1,0 +1,25 @@
+/* Step numbers in their own column so the dividing rules run full width. */
+.steps {
+  counter-reset: step;
+}
+
+.steps > li {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  align-items: baseline;
+  counter-increment: step;
+}
+
+.steps > li::before {
+  content: counter(step);
+  grid-row: 1;
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.steps > li > * {
+  grid-column: 2;
+}

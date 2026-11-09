@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { projects } from '../../content/projects';
-import { ProjectCard } from '../../shared/project-card/project-card';
-import { SectionHeading } from '../../shared/section-heading/section-heading';
+import { featuredProjects, smallerProjects } from '../../content/projects';
+import { PageSection } from '../../shared/page-section/page-section';
+import { ProjectEntry } from '../../shared/project-entry/project-entry';
 
 @Component({
   selector: 'app-work',
-  imports: [ProjectCard, SectionHeading],
+  imports: [PageSection, ProjectEntry],
   templateUrl: './work.html',
   host: { class: 'block' },
 })
 export class Work {
-  protected readonly featured = projects[0];
-  protected readonly others = projects.slice(1);
+  protected readonly featured = featuredProjects;
+  protected readonly smaller = smallerProjects;
 }

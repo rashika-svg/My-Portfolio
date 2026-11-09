@@ -1,76 +1,63 @@
-<section
-  id="about"
-  class="section-space border-t border-line bg-surface"
-  aria-labelledby="about-title"
->
-  <div class="page-container grid gap-12 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-20">
-    <div class="self-start lg:sticky lg:top-28">
+<app-page-section sectionId="about" heading="About">
+  <div class="grid gap-16 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-7">
       @if (profile.photo) {
         <img
-          class="portrait"
+          class="mb-10 size-40 rounded-sm object-cover"
           [ngSrc]="profile.photo"
-          width="480"
-          height="480"
+          width="320"
+          height="320"
           [alt]="'Portrait of ' + profile.name"
         />
-      } @else {
-        <div class="monogram" aria-hidden="true">
-          <span>{{ profile.initials }}</span>
-        </div>
       }
+      <div class="max-w-152 space-y-5">
+        <p class="type-standfirst">
+          I'm {{ profile.firstName }}, a frontend developer in {{ profile.location }}. I've worked
+          professionally with Angular for {{ profile.experience }}, across versions 16 to 22.
+        </p>
+        <p>
+          At work I've built enterprise dashboards, a digital-signage platform and a learning
+          management system, integrated with .NET Core REST APIs. Between them they cover charts and
+          large data tables, drag-and-drop screen layouts, media cropping and video playback,
+          rich-text and code editors, and course, quiz and reporting tools.
+        </p>
+        <p>
+          I've also built two live websites, for Ashvad Tech and for Marivon's maritime training,
+          and earlier, admin dashboard modules and blog management features.
+        </p>
+        <p>
+          The parts of frontend work I pay most attention to are the ones that are easy to skip:
+          components that stay consistent as a product grows, data flow that stays predictable with
+          RxJS, and edge cases checked before something is called done.
+        </p>
+        <p>
+          I've also worked with ASP.NET Core, SQL Server and Redis, which helps when a frontend
+          problem turns out to start on the server.
+        </p>
+      </div>
+    </div>
 
-      <dl class="facts">
+    <div class="space-y-14 lg:col-span-4 lg:col-start-9">
+      <dl class="border-b border-rule text-[0.9375rem]">
         @for (fact of facts; track fact.label) {
-          <div>
-            <dt>{{ fact.label }}</dt>
+          <div class="grid grid-cols-[7.5rem_1fr] gap-4 border-t border-rule py-3">
+            <dt class="text-muted">{{ fact.label }}</dt>
             <dd>{{ fact.value }}</dd>
           </div>
         }
       </dl>
-    </div>
 
-    <div>
-      <h2 id="about-title" class="type-h2">About me</h2>
-
-      <div class="mt-7 max-w-[38rem] space-y-5">
-        <p class="type-lede">
-          I'm {{ profile.name }}, a frontend developer with {{ profile.experience }} of professional
-          experience building interfaces that people use every day.
-        </p>
-        <p>
-          In my full-time role I've worked on an enterprise digital-signage platform: interactive
-          dashboards, drag-and-drop layout tools, media cropping and video playback, and rich-text
-          and code editors. I've also built admin dashboard modules and blog management features,
-          and integrated them with .NET Core REST APIs.
-        </p>
-        <p>
-          That work shaped how I build. I create reusable components instead of one-off screens, use
-          RxJS to keep data flow predictable, and check the details, like spacing, loading states
-          and edge cases, before I call something done. The result is an interface that is pleasant
-          to use today and easy to change later.
-        </p>
-        <p>
-          Now I take on freelance work for startups, small businesses and agencies. I keep
-          communication clear and estimates realistic, and I'm as comfortable inside an existing
-          codebase as I am starting from scratch.
-        </p>
+      <div>
+        <h3 class="type-label">Tools I work with</h3>
+        <dl class="mt-4 border-b border-rule text-[0.9375rem]">
+          @for (group of skillGroups; track group.label) {
+            <div class="border-t border-rule py-3">
+              <dt class="text-muted">{{ group.label }}</dt>
+              <dd class="mt-0.5">{{ group.items.join(', ') }}</dd>
+            </div>
+          }
+        </dl>
       </div>
-
-      <h3 class="mt-12 text-sm font-semibold">Toolkit</h3>
-      <dl class="toolkit">
-        @for (group of skillGroups; track group.label) {
-          <div>
-            <dt>{{ group.label }}</dt>
-            <dd>
-              <ul class="flex flex-wrap gap-1.5">
-                @for (item of group.items; track item) {
-                  <li>{{ item }}</li>
-                }
-              </ul>
-            </dd>
-          </div>
-        }
-      </dl>
     </div>
   </div>
-</section>
+</app-page-section>

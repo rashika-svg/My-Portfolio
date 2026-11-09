@@ -1,64 +1,52 @@
-<section id="contact" class="contact on-dark" aria-labelledby="contact-title">
-  <div class="backdrop" aria-hidden="true"></div>
-
-  <div
-    class="page-container section-space relative grid gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16"
-  >
-    <div>
-      <h2 id="contact-title" class="type-h2 text-white">Tell me about your project</h2>
-      <p class="type-lede mt-5 max-w-[34rem] text-white/75">
-        Send a short note about what you're building and where you need help. I reply
-        {{ profile.responseTime }} with next steps or a few questions.
+<app-page-section sectionId="contact" heading="Tell me what you're building" tone="dark">
+  <div class="grid gap-16 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-8">
+      <p class="type-standfirst max-w-136 text-muted">
+        Email me a few lines about your project. I'll reply {{ profile.responseTime }}, with next
+        steps or a few questions.
       </p>
 
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a class="btn btn-light" [href]="mailto">
-          <app-icon name="mail" class="size-[1.125rem]" />
-          Email me
-        </a>
-        <button type="button" class="btn btn-outline-light" (click)="copyEmail()">
-          <app-icon [name]="copyState() === 'copied' ? 'check' : 'copy'" class="size-[1.125rem]" />
-          {{ copyState() === 'copied' ? 'Email copied' : 'Copy email address' }}
+      <a class="email mt-10 inline-block" [href]="mailto">{{ profile.email }}</a>
+
+      <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <button type="button" class="copy" (click)="copyEmail()">
+          {{ copyState() === 'copied' ? 'Copied' : 'Copy address' }}
         </button>
+        @if (localTime()) {
+          <p class="type-meta">It's {{ localTime() }} in India right now.</p>
+        }
       </div>
-
-      <p class="mt-5 text-sm text-white/65">
-        Or write directly to
-        <a class="email" [href]="mailto">{{ profile.email }}</a>
-      </p>
       <p class="sr-only" aria-live="polite">
         @if (copyState() === 'copied') {
-          Email address copied to clipboard.
+          Email address copied.
         } @else if (copyState() === 'failed') {
-          Copy failed. The email address is {{ profile.email }}.
+          Copy failed. The address is {{ profile.email }}.
         }
       </p>
-
-      <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3" aria-label="Other ways to reach me">
-        @for (link of links; track link.label) {
-          <li>
-            <a class="social" [href]="link.url" target="_blank" rel="noopener noreferrer">
-              <app-icon [name]="link.icon" class="size-[1.125rem]" />
-              {{ link.label }}
-              <span class="sr-only">(opens in a new tab)</span>
-            </a>
-          </li>
-        }
-      </ul>
     </div>
 
-    <aside class="brief" aria-labelledby="brief-title">
-      <h3 id="brief-title" class="text-lg font-semibold text-white">
-        What to include in your message
-      </h3>
-      <ul class="checklist">
-        @for (item of checklist; track item) {
-          <li>{{ item }}</li>
+    <div class="space-y-12 lg:col-span-4">
+      <dl class="border-b border-rule text-[0.9375rem]">
+        @for (channel of channels; track channel.label) {
+          <div class="grid grid-cols-[6.5rem_1fr] gap-4 border-t border-rule py-3">
+            <dt class="text-muted">{{ channel.label }}</dt>
+            <dd class="min-w-0 wrap-break-word">
+              <a class="link" [href]="channel.url" target="_blank" rel="noopener noreferrer">
+                {{ channel.text }}<span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </dd>
+          </div>
         }
-      </ul>
-      <p class="mt-6 border-t border-white/12 pt-5 text-sm text-white/65">
-        Estimates depend on scope. You'll get a written quote before any work starts.
-      </p>
-    </aside>
+      </dl>
+
+      <div>
+        <h3 class="type-label">Useful to include</h3>
+        <ul class="bullets mt-4 space-y-1.5 text-[0.9375rem] text-muted">
+          @for (item of checklist; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+    </div>
   </div>
-</section>
+</app-page-section>

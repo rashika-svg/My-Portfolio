@@ -1,16 +1,21 @@
-<section id="work" class="section-space" aria-labelledby="work-title">
-  <div class="page-container">
-    <app-section-heading
-      headingId="work-title"
-      heading="Selected work"
-      lede="Professional work from my full-time role, plus personal projects I built to sharpen specific skills."
-    />
+<app-page-section
+  sectionId="work"
+  heading="Selected work"
+  tone="dark"
+  note="A personal project and two live websites, then three products from my full-time role. Screens and code for the dashboards and signage platform belong to my employer, so those two are described rather than shown."
+>
+  <div class="divide-y divide-rule">
+    @for (project of featured; track project.id) {
+      <app-project-entry class="py-20 first:pt-0 lg:py-28" [project]="project" />
+    }
+  </div>
 
-    <div class="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2 lg:gap-8">
-      <app-project-card class="lg:col-span-2" [project]="featured" [featured]="true" />
-      @for (project of others; track project.id) {
-        <app-project-card [project]="project" />
+  <div class="grid gap-8 border-t border-rule pt-14 lg:grid-cols-12 lg:gap-10">
+    <h3 class="type-label lg:col-span-4">Other work</h3>
+    <div class="grid gap-12 sm:grid-cols-2 lg:col-span-8">
+      @for (project of smaller; track project.id) {
+        <app-project-entry [project]="project" variant="compact" />
       }
     </div>
   </div>
-</section>
+</app-page-section>
